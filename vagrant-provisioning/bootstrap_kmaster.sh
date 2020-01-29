@@ -17,3 +17,6 @@ su - vagrant -c "kubectl create -f https://docs.projectcalico.org/v3.11/manifest
 # Generate Cluster join command
 echo "[TASK 4] Generate and save cluster join command to /joincluster.sh"
 kubeadm token create --print-join-command > /joincluster.sh
+
+# Copy Kubernetes conf
+mkdir .kube && cp /etc/kubernetes/admin.conf .kube/config
