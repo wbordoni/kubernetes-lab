@@ -6,8 +6,8 @@ cat >>/etc/hosts<<EOF
 172.42.42.100 kmaster.m2i.form kmaster
 172.42.42.101 kworker1.m2i.form kworker1
 172.42.42.102 kworker2.m2i.form kworker2
-172.42.42.103 kworker2.m2i.form kworker3
-172.42.42.104 kworker2.m2i.form kworker4
+172.42.42.103 kworker3.m2i.form kworker3
+172.42.42.104 kworker4.m2i.form kworker4
 EOF
 
 # Install docker from Docker-ce repository
