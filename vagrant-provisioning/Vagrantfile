@@ -14,14 +14,27 @@ Vagrant.configure(2) do |config|
     kmaster.vm.network "private_network", ip: "172.42.42.100"
     kmaster.vm.provider "virtualbox" do |v|
       v.name = "kmaster"
-      v.memory = 3048
+      v.memory = 4048
       v.cpus = 4
       # Prevent VirtualBox from interfering with host audio stack
       v.customize ["modifyvm", :id, "--audio", "none"]
     end
     kmaster.vm.provision "shell", path: "bootstrap_kmaster.sh"
   end
-
+  # storage Master Server
+  config.vm.define "storage" do |storage|
+    storage.vm.box = "centos/7"
+    storage.vm.hostname = "storage.m2i.form"
+    storage.vm.network "private_network", ip: "172.42.42.106"
+    storage.vm.provider "virtualbox" do |v|
+      v.name = "storage"
+      v.memory = 1024
+      v.cpus = 1
+      # Prevent VirtualBox from interfering with host audio stack
+      v.customize ["modifyvm", :id, "--audio", "none"]
+    end
+    storage.vm.provision "shell", path: "bootstrap_storage.sh"
+  end
   NodeCount = 4
 
   # Kubernetes Worker Nodes
